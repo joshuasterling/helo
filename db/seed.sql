@@ -14,10 +14,8 @@ author_id INTEGER REFERENCES users(id)
 );
 
 ALTER TABLE users
-ALTER COLUMN password TEXT;
-
-ALTER TABLE users
-MODIFY password TEXT;
+ALTER COLUMN password
+SET DATA TYPE TEXT;
 
 INSERT INTO users
 (username, password, profile_pic)

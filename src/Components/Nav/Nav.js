@@ -1,17 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Nav extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {};
   }
 
   render() {
+    console.log("hit", this.props);
     return (
-      <div classname="nav">
+      <div className="nav">
         Nav Component
+        <div className="profile-pic">
+          {/* <img src={this.props.user.profile_pic} /> */}
+        </div>
         <Link to="/dashboard">
           <button>Home</button>
         </Link>
@@ -26,4 +31,12 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = reduxState => {
+  const { user } = reduxState;
+  return {
+    username: user.username,
+    profile_pic: user.profile_pic
+  };
+};
+
+export default connect(mapStateToProps)(Nav);

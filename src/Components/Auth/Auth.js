@@ -17,6 +17,21 @@ class Auth extends React.Component {
     });
   };
 
+  handleLogin = () => {
+    axios
+      .post("/api/login", {
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(res => {
+        this.props.getUser(res.data);
+        this.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   handleRegister = () => {
     const { username, password } = this.state;
     axios
@@ -51,9 +66,11 @@ class Auth extends React.Component {
           onChange={this.handleInput}
         />
         <br />
-        <button>Login</button>
+        <button onClick={this.handleLogin} className="input-container-button">
+          Login
+        </button>
         <button
-          onclick={this.handleRegister}
+          onClick={this.handleRegister}
           className="input-container-button"
         >
           Register

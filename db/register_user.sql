@@ -1,5 +1,5 @@
 INSERT INTO users
 (username, password)
 VALUES
-($1, $2)
+(${username}, ${hash})
 RETURNING id, username;
