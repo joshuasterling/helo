@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { getUser } from "../../ducks/reducer";
 import axios from "axios";
 
 class Auth extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       username: "",
@@ -80,4 +82,4 @@ class Auth extends React.Component {
   }
 }
 
-export default Auth;
+export default connect(null, { getUser })(Auth);

@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 module.exports = {
   login: async (req, res) => {
     const { username, password } = req.body;
-    const { session } = req;
+    // const { session } = req;
     const db = req.app.get("db");
 
     let user = await db.check_user([username]);
@@ -16,8 +16,9 @@ module.exports = {
 
     if (authenticated) {
       delete user.password;
-      session.user = user;
-      res.status(202).send(session.user);
+      // session.user = user;
+      // res.status(202).send(session.user);
+      res.status(202).send(user);
     } else {
       res.status(401).send("Incorrect Password");
     }
@@ -39,7 +40,8 @@ module.exports = {
 
     let newUser = await db.register_user({ username, hash });
     newUser = newUser[0];
-    session.user = user;
-    res.status(200).send(session.user);
+    // session.user = user;
+    // res.status(200).send(session.user);
+    res.status(200).send(newUser);
   }
 };

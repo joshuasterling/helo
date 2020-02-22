@@ -15,7 +15,7 @@ class Nav extends React.Component {
       <div className="nav">
         Nav Component
         <div className="profile-pic">
-          {/* <img src={this.props.user.profile_pic} /> */}
+          {/* <img src={user.profile_pic} /> */}
         </div>
         <Link to="/dashboard">
           <button>Home</button>
